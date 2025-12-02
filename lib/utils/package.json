@@ -1,0 +1,15 @@
+{
+  "name": "@brees-kerv/aoc-utils",
+  "version": "1.0.0",
+  "description": "Shared utils for Advent of Code problems",
+  "main": "dist/utils.js",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf dist",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "npm run clean"
+  },
+  "author": "B Rees",
+  "license": "MIT",
+  "type": "module"
+}

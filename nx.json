@@ -8,15 +8,28 @@
       }
     }
   ],
+
+  "workspaceLayout": {
+    "libsDir": "lib"
+  },
   "targetDefaults": {
     "build": {
-      "outputs": [
-        "{projectRoot}/dist"
-      ],
+      "dependsOn": ["^build"],
+      "outputs": ["{projectRoot}/dist"],
       "cache": true
     },
+    "build:test": {
+      "dependsOn": ["build"]
+    },
     "test": {
-      "cache": true
+      "cache": true,
+      "dependsOn": ["build:test"]
+    },
+    "run-a": {
+      "dependsOn": ["build"]
+    },
+    "run-b": {
+      "dependsOn": ["build"]
     }
   }
 }

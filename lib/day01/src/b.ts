@@ -1,6 +1,6 @@
-import { readFileIntoArray } from "./utils.js";
+import { readFileIntoArray } from "@brees-kerv/aoc-utils";
 
-const day1Data = readFileIntoArray("./data/day-1.txt");
+const day1Data = readFileIntoArray("../../data/day01/data.txt");
 
 let passwordCount = 0;
 let currentPosition = 50;

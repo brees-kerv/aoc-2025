@@ -5,8 +5,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "tsc",
-    "test": "jest"
+    "day01a": "npx nx run-a @brees-kerv/aoc-2025-day01",
+    "day01b": "npx nx run-b @brees-kerv/aoc-2025-day01",
+    "build": "nx run-many -t build",
+    "test": "nx run-many -t test"
   },
   "repository": {
     "type": "git",
@@ -26,10 +28,13 @@
     "@types/node": "^24.10.1",
     "jest": "^30.2.0",
     "nx": "22.1.3",
+    "rimraf": "^6.1.2",
     "ts-node": "^10.9.2"
   },
-  "nx": {},
   "dependencies": {
     "typescript": "^5.9.3"
-  }
+  },
+  "workspaces": [
+    "lib/*"
+  ]
 }
