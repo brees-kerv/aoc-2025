@@ -1,0 +1,20 @@
+{
+  "name": "@brees-kerv/aoc-2025-day02",
+  "version": "1.0.0",
+  "description": "Day 2 Solution",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "tsc",
+    "prebuild": "npm run clean",
+    "run-a": "node ./dist/a.js",
+    "run-b": "node ./dist/b.js",
+    "test": "jest"
+  },
+  "author": "B Rees",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@brees-kerv/aoc-utils": "*"
+  }
+}

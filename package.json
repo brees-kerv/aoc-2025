@@ -7,6 +7,8 @@
   "scripts": {
     "day01a": "npx nx run-a @brees-kerv/aoc-2025-day01",
     "day01b": "npx nx run-b @brees-kerv/aoc-2025-day01",
+    "day02a": "npx nx run-a @brees-kerv/aoc-2025-day02",
+    "day02b": "npx nx run-b @brees-kerv/aoc-2025-day02",
     "build": "nx run-many -t build",
     "test": "nx run-many -t test"
   },
