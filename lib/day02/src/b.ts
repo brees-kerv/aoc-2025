@@ -2,70 +2,38 @@ import { readFileIntoArray } from "@brees-kerv/aoc-utils";
 
 const data = readFileIntoArray("../../data/day02/data.txt");
 
-let passwordCount = 0;
-let currentPosition = 50;
+let total = 0;
 
-for (const move of data) {
-  const direction = move[0];
-  let count = Number.parseInt(move.substring(1));
+const isRepeatingNumber = (numberStr: string): boolean => {
+  const maxRepeatingSectionLength = Math.floor(numberStr.length / 2);
 
-  let isFirstMove = true; // Dont score if we start on zero
+  for(let i = 1; i <= maxRepeatingSectionLength; i++) {
+    const patternToTry = numberStr.substring(0, i);
+    
+    const regex = new RegExp(`^((${patternToTry})+$)`);
 
-  switch (direction) {
-    case "L": {
-
-      while (count > 0) {
-        if (isFirstMove && currentPosition === 0) {
-          currentPosition = 99;
-          isFirstMove = false;
-        } else {
-          currentPosition -= 1;
-
-          if (currentPosition === 0 && count !== 1) {
-            passwordCount += 1;
-          } else if (currentPosition < 0) {
-            currentPosition = 99;
-          }
-        }
-        count--;
-      }
-      break;
-    }
-    case "R": {
-      while (count > 0) {
-
-        if (isFirstMove && currentPosition === 0) {
-          currentPosition += 1;
-          isFirstMove = false;
-        } else {
-          currentPosition += 1;
-
-          if (currentPosition > 99) {
-            currentPosition = 0;
-          }
-
-          if (currentPosition === 0 && count !== 1) {
-            passwordCount += 1;
-          }
-        }
-        count--;
-      }
-      break;
-    }
-
-    default: {
-      throw new Error(`Invalid direction ${direction}`);
-    }
+    if(regex.test(numberStr)) return true;
   }
 
-  if (currentPosition === 0) {
-    passwordCount += 1;
+  return false;
+};
+
+for (const line of data) {
+  for (const clause of line.split(",")) {
+
+    if (clause.trim() === "") continue; // Skip empty clauses (eg end of line)
+
+    const parts = clause.split("-");
+
+    for (
+      let i = Number.parseInt(parts[0]!);
+      i <= Number.parseInt(parts[1]!);
+      i++
+    ) {
+      const nextId = `${i}`;
+      total += isRepeatingNumber(nextId) ? i : 0;
+    }
   }
-
-  console.log(
-    `move: ${move} curr: ${currentPosition} password count: ${passwordCount}`
-  );
-
 }
 
-console.log(passwordCount);
+console.log(total);
